@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // bir değişken tanımlaması ya da bir fonksiyon vb. tanumlamlamlarını return ifadesinden önce yapmalıyız.
+
+  // We must define a variable or a function, etc. before the return statement.
+
+  const myVar: string = "Kaan"
+  const myNumber: number = 23
+
+  /// return () parantez içersin de dönen değerler html etiketleridir.
+  /// html etiketleri içersine değişkenler verebiliriz bunun için { } arasında kullanılması gerekmektedir.
+
+  /// return () The values returned in parentheses are html tags.
+  /// We can give variables inside html tags, for this, it must be used between { }.
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <p>My name is {myVar} and  {myNumber} years old. <br />
+        This is my first react project.</p><br />
+      <p>Benim adim {myVar} ve {myNumber} yasindayim.<br />
+        Bu Benim ilk react projem.</p>
+    </div>
+
+
   )
 }
 
