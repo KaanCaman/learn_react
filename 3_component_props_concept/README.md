@@ -1,4 +1,4 @@
-# 3. Component Props Kavramlari /Componenta and Props Concept
+# 3. Component Props Kavramlari /Component and Props Concept
 
 ## React + TypeScript + Vite
 
