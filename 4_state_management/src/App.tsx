@@ -1,13 +1,13 @@
-import React from 'react'
-import './App.css'
+import "./App.css";
+// import Counter from "./examples/counter/Counter";
+import Todo from "./examples/todo/todo";
 
 function App() {
   return (
     <>
-      <h1>State Management</h1>
-      
+      <Todo />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

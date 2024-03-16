@@ -1,0 +1,101 @@
+/* * Flat icons */
+/* * Refresh icon */
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
+/* * plus icon */
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
+
+/* * minus icon */
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-straight/css/uicons-bold-straight.css');
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    padding: 20px;
+    color: #545454;
+
+}
+
+.counter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    color: #545454;
+}
+
+.counter h3{
+    font-size: 2em;
+    margin: 0;
+}
+
+.counter p{
+    font-size: 1.5em;
+    margin: 0;
+}
+
+button{
+    padding: 10px 20px;
+
+    margin: 10px;
+    font-size: 1.5em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+button:hover{
+    opacity: 0.8;
+
+
+}
+
+button:active{
+    transform: scale(0.95);
+    background-color: rgb(200, 200, 200);
+}
+
+.counter-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.counter-increment {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.counter-decrement {
+    background-color: #f44336;
+    color: white;
+}
+.counter-reset {
+    background-color: #008CBA;
+    color: white;
+}
+
+.counter-area{
+    margin: 0;
+}
+
+.counter-value{
+    font-size: 10em;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+}
+.counter-value:hover{
+    opacity: 0.8;
+}
+
+
+
+.counter-value:focus{
+    outline: none;
+}
