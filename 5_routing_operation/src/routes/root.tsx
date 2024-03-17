@@ -1,10 +1,24 @@
+/* eslint-disable react-refresh/only-export-components */
 // https://reactrouter.com/en/main/start/tutorial#the-root-route
 
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLoaderData , Form} from "react-router-dom";
+import { getContacts, createContact } from "../contacts";
+import { ContactInfo } from "../types/contact_types";
+
+
+export async function action(): Promise<{ contact: ContactInfo }> {
+    const contact = await createContact();
+    return { contact };
+}
+export async function loader(): Promise<{ contacts: ContactInfo[] }>{
+  const contacts = await getContacts("");
+  return { contacts };
+}
 
 //* The Root Route
 //* Kök Rotası
-export default function Root() {
+export default function Root() { 
+  const { contacts } = useLoaderData() as { contacts: ContactInfo[] };
   return (
     <>
       <div id="sidebar">
@@ -21,13 +35,12 @@ export default function Root() {
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
           </form>
-          <form method="post">
+          <Form method="post">
             <button type="submit">New</button>
-          </form>
+          </Form>
         </div>
         <nav>
-          <ul>
-            {/*
+          {/*
                 * The <Link> to the contact pages.
                 * İletişim sayfalarına Link.
                 * 
@@ -58,14 +71,28 @@ export default function Root() {
                 * https://reactrouter.com/en/main/start/tutorial#client-side-routing
             
             */}
+          {contacts.length ? (
+            <ul>
+              {contacts.map((contact:ContactInfo) => (
+                <li key={contact.id}>
+                  <Link to={`contacts/${contact.id}`}>
+                    {contact.first || contact.last ? (
+                      <>
+                        {contact.first} {contact.last}
+                      </>
+                    ) : (
+                      <i>No Name</i>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>
+              <i>No Contacts / Kişi Yok</i>
+            </p>
+          )}
 
-            <li>
-              <Link to={`/contacts/1`}>Your Name</Link>
-            </li>
-            <li>
-              <Link to={`/contacts/2`}>Your Friend</Link>
-            </li>
-          </ul>
           {/*  */}
         </nav>
       </div>

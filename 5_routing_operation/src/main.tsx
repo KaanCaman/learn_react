@@ -1,5 +1,8 @@
 import ReactDOM from "react-dom/client";
-import Root from "./routes/root";
+import Root, {
+  loader as rootLoader,
+  action as rootAction,
+} from "./routes/root";
 
 import {
   createBrowserRouter,
@@ -8,7 +11,9 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import ErrorPage from "./pages/error_page";
-import Contact from "./routes/contact";
+import Contact, { loader as contactLoader } from "./routes/contact";
+import EditContact, { action as editAction } from "./routes/edit";
+import { StrictMode } from "react";
 
 //* Define our routes
 //* Rotalarımızı tanımlayalım
@@ -18,6 +23,15 @@ const routes: RouteObject[] = [
   {
     path: "/",
     element: <Root />,
+
+    // Load the root route's data
+    // Kök rotanın verilerini yükledik.
+    loader: rootLoader,
+
+    // Define the root route's action
+    // Kök rotanın eylemini tanımladık.
+    action: rootAction,
+
     children: [
       // Add a new route for the contact page - letişim sayfası için yeni bir rota ekledik.
       // This route will have a dynamic segment for the contact's ID. - Bu rota, iletişim kişisinin kimliği için dinamik bir segmente sahip olacak.
@@ -25,6 +39,17 @@ const routes: RouteObject[] = [
       {
         path: "/contacts/:id",
         element: <Contact />,
+
+        loader: contactLoader,
+      },
+
+      //   add Edit routes - Düzenleme rotaları ekle
+      {
+        path: "/contacts/:id/edit",
+        element: <EditContact />,
+        loader: contactLoader,
+
+        action: editAction,
       },
     ],
     errorElement: <ErrorPage />,
@@ -38,7 +63,7 @@ const router = createBrowserRouter(routes);
 //* Render our app
 //* Uygulamamızı render edelim
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <>
+  <StrictMode>
     <RouterProvider router={router} />
-  </>
+  </StrictMode>
 );

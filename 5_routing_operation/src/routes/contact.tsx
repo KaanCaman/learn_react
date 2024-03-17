@@ -1,61 +1,66 @@
-import { Form } from "react-router-dom";
+/* eslint-disable react-refresh/only-export-components */
+import { Form, useLoaderData } from "react-router-dom";
+import { ContactInfo } from "../types/contact_types";
+import { getContact } from "../contacts";
 
-// Define the contact type
-// İletişim tipini tanımlayın
-type contact = {
-  first: string;
-  last: string;
-  avatar: string;
-  twitter: string;
-  notes: string;
-  favorite: boolean;
-};
-
-// Define the contact component
-// İletişim bileşenini tanımlayın
-const Contact = () => {
-  const contact: contact = {
+export async function loader({ params }): Promise<ContactInfo > {
+  const contact = (await getContact(params.id)) ?? {
+    id: "1",
     first: "Your",
     last: "Name",
     avatar: "https://www.gravatar.com/avatar/0?d=mp&f=y",
     twitter: "yourhandle",
     notes: "This is a note",
     favorite: true,
+    createdAt: Date.now(),
   };
+  return  contact;
+}
+
+// Define the contact component
+// İletişim bileşenini tanımlayın
+const Contact = () => {
+  const contactData = useLoaderData() as ContactInfo;
   return (
     <>
       <div id="contact">
         <div>
           <img
-            key={contact.avatar}
-            src={contact.avatar}
-            alt={`Avatar of ${contact.first} ${contact.last}`}
+            key={contactData.avatar}
+            src={contactData.avatar}
+            alt={
+              typeof contactData.first !== "undefined" &&
+              typeof contactData.last !== "undefined"
+                ? `Avatar of ${contactData.first} ${contactData.last}`
+                : ""
+            }
           />
         </div>
 
         <div>
           <h1>
-            {contact.first || contact.last ? (
+            {typeof contactData.first !== "undefined" &&
+            typeof contactData.last !== "undefined" ? (
               <>
-                {contact.first} {contact.last}
+                {contactData.first} {contactData.last}
               </>
             ) : (
               <i>No Name</i>
             )}{" "}
-            <Favorite {...contact} />
+            <Favorite {...contactData} />
           </h1>
 
-          {contact.twitter && (
+          {contactData.twitter && (
             <p>
               <a
                 target="_blank"
-                href={`https://twitter.com/${contact.twitter}`}
+                href={`https://twitter.com/${contactData.twitter}`}
               >
-                @{contact.twitter}
+                @{contactData.twitter}
               </a>
             </p>
           )}
-          {contact.notes && <p>{contact.notes}</p>}
+          {contactData.notes && <p>{contactData.notes}</p>}
 
           <div>
             <Form action="edit">
@@ -81,8 +86,8 @@ const Contact = () => {
 
 // Define the favorite component
 // Favori bileşenini tanımlayın
-const Favorite = (contact: contact) => {
-  const favorite: boolean = contact.favorite;
+const Favorite = (contact: ContactInfo) => {
+  const favorite: boolean = contact.favorite ?? false;
   return (
     <>
       <Form>
