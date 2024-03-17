@@ -1,16 +1,11 @@
-
-import './App.css'
+import "./App.css";
 
 function App() {
-
-
   return (
     <>
-     <div>
-        <h1>Routing Operation</h1>
-     </div>
+      <div></div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

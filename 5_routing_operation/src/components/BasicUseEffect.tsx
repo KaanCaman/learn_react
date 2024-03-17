@@ -1,12 +1,3 @@
-# 5.  Rotalama ve işlemleri / Routing and Operation
-
-## React + TypeScript + Vite
-
-### Basit Bir useEffect hooku Kullanımı / Basic Use of useEffect hook
-
-- [BasicUseEffect.tsx](./src/components/BasicUseEffect.tsx)
-
-```tsx
 import { useState, useEffect } from "react";
 
 // Basit bir useEffect kullanımı
@@ -37,4 +28,5 @@ const BasicUseEffect = () => {
     </>
   );
 };
-```
+
+export default BasicUseEffect;
