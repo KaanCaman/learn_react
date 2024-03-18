@@ -58,6 +58,12 @@ const routes: RouteObject[] = [
       {
         path: "/contacts/:id/destroy",
         action: destroyAction,
+        errorElement: (
+          // https://reactrouter.com/en/main/start/tutorial#contextual-errors
+          <>
+            <div>Bir hata oluştu / An error occurred </div>
+          </>
+        ),
       },
     ],
     errorElement: <ErrorPage />,

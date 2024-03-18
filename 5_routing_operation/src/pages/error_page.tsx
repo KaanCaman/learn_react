@@ -25,7 +25,15 @@ const ErrorPage = () => {
 
         <p>
           <i>
-            {error !== undefined ? (error as ErrorResponse).statusText : "Unknown"}
+            {error !== undefined ? (
+              <p>
+                {(error as ErrorResponse).statusText}{" "}
+                {(error as ErrorResponse).status}{" "}
+                {(error as { message: string }).message}
+              </p>
+            ) : (
+              "Unknown"
+            )}
           </i>
         </p>
       </div>

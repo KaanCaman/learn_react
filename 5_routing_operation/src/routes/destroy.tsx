@@ -20,6 +20,7 @@ import { deleteContact } from "../contacts";
 // Bir form ekleyin, bir eylem ekleyin, gerisini React Router halleder.
 
 export async function action({ params }) {
+  // throw new Error("Oh Dang! ");
   await deleteContact(params.id);
   return redirect(`/`);
 }
