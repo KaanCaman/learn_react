@@ -8,10 +8,11 @@ import {
   Form,
   redirect,
   useNavigation,
+  useSubmit,
 } from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 import { ContactInfo } from "../types/contact_types";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 //* The `action` function is used to perform side-effects, such as data fetching, and navigation.
 //* Action fonksiyonu eğer yeni bir kişi oluşturulduysa, kişinin düzenleme sayfasına yönlendirme yapar.
@@ -41,6 +42,8 @@ export default function Root() {
   };
   const [query, setQuery] = useState(q);
 
+  // https://reactrouter.com/en/main/start/tutorial#submitting-forms-onchange
+  const submit = useSubmit();
   useEffect(() => {
     setQuery(q);
   }, [q]);
@@ -60,7 +63,8 @@ export default function Root() {
               name="q"
               value={query}
               onChange={(e) => {
-                setQuery(e.target.value);
+                // setQuery(e.target.value);
+                submit(e.currentTarget.form);
               }}
             />
             <div id="search-spinner" aria-hidden hidden={true} />
