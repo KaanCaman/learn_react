@@ -128,6 +128,7 @@ export default function Root() {
                     {contact.first || contact.last ? (
                       <>
                         {contact.first} {contact.last}
+                        {contact.favorite ? "★" : "☆"}
                       </>
                     ) : (
                       <i>No Name</i>

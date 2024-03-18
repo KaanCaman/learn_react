@@ -11,10 +11,14 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import ErrorPage from "./pages/error_page";
-import Contact, { loader as contactLoader } from "./routes/contact";
+import Contact, {
+  loader as contactLoader,
+  action as contactAction,
+} from "./routes/contact";
 import EditContact, { action as editAction } from "./routes/edit";
 
 import { action as destroyAction } from "./routes/destroy";
+
 import { StrictMode } from "react";
 import Index from "./routes";
 
@@ -49,7 +53,7 @@ const routes: RouteObject[] = [
       {
         path: "/contacts/:id",
         element: <Contact />,
-
+        action: contactAction,
         loader: contactLoader,
       },
 

@@ -1,9 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, useFetcher, useLoaderData } from "react-router-dom";
 import { ContactInfo } from "../types/contact_types";
-import { getContact } from "../contacts";
+import { getContact, updateContact } from "../contacts";
 
-export async function loader({ params }): Promise<ContactInfo > {
+export async function loader({ params }): Promise<ContactInfo> {
   const contact = (await getContact(params.id)) ?? {
     id: "1",
     first: "Your",
@@ -14,7 +14,20 @@ export async function loader({ params }): Promise<ContactInfo > {
     favorite: true,
     createdAt: Date.now(),
   };
-  return  contact;
+  return contact;
+}
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  console.log(
+    params,
+    formData.get("favorite") === "true",
+    formData,
+    "action fonksiyonu içindeki console.log"
+  );
+
+  return updateContact(params.id, {
+    favorite: formData.get("favorite") === "true",
+  });
 }
 
 // Define the contact component
@@ -46,7 +59,7 @@ const Contact = () => {
               </>
             ) : (
               <i>No Name</i>
-            )}{" "}
+            )}
             <Favorite {...contactData} />
           </h1>
 
@@ -87,22 +100,30 @@ const Contact = () => {
 // Define the favorite component
 // Favori bileşenini tanımlayın
 const Favorite = (contact: ContactInfo) => {
-  const favorite: boolean = contact.favorite ?? false;
+  const fetcher = useFetcher();
+  const { first, last, favorite } = contact;
+
+  let fav: boolean = favorite;
+
+  if (fetcher.formData) {
+    fav = fetcher.formData.get("favorite") === "true";
+  }
+
   return (
     <>
-      <Form>
+      <fetcher.Form method="post">
         <button
           name="favorite"
-          value={favorite ? "false" : "true"}
+          value={fav ? "false" : "true"}
           aria-label={
             favorite
-              ? `Remove ${contact.first} ${contact.last} from favorites`
-              : `Add ${contact.first} ${contact.last} to favorites`
+              ? `Remove ${first} ${last} from favorites`
+              : `Add ${first} ${last} to favorites`
           }
         >
           {favorite ? "★" : "☆"}
         </button>
-      </Form>
+      </fetcher.Form>
     </>
   );
 };
