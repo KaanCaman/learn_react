@@ -67,9 +67,13 @@ export default function Root() {
               className={searching ? "loading" : ""}
               type="search"
               name="q"
-              value={q!}
+              value={q ?? ""}
               onChange={(e) => {
-                submit(e.currentTarget.form);
+                const istFirstSearch = q === null;
+                submit(e.currentTarget.form, {
+                  // https://reactrouter.com/en/main/start/tutorial#managing-the-history-stack
+                  replace: !istFirstSearch,
+                });
               }}
             />
             <div id="search-spinner" aria-hidden hidden={!searching} />
