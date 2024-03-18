@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 import { ContactInfo } from "../types/contact_types";
+import { useEffect, useState} from "react";
 
 //* The `action` function is used to perform side-effects, such as data fetching, and navigation.
 //* Action fonksiyonu eğer yeni bir kişi oluşturulduysa, kişinin düzenleme sayfasına yönlendirme yapar.
@@ -22,32 +23,49 @@ export async function action() {
 
 //* The `loader` function is used to fetch data for the route.
 //* Loader fonksiyonu, rota için veri almak için kullanılır.
-export async function loader(): Promise<{ contacts: ContactInfo[] }> {
-  const contacts = await getContacts("");
-  return { contacts };
+export async function loader({
+  request,
+}): Promise<{ contacts: ContactInfo[]; q: string | null }> {
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q");
+  const contacts = await getContacts(q ?? "");
+  return { contacts, q };
 }
 
 //* The Root Route
 //* Kök Rotası
 export default function Root() {
-  const { contacts } = useLoaderData() as { contacts: ContactInfo[] };
+  const { contacts, q } = useLoaderData() as {
+    contacts: ContactInfo[];
+    q: string | null;
+  };
+  const [query, setQuery] = useState(q);
+
+  useEffect(() => {
+    setQuery(q);
+  }, [q]);
+
   const navigation = useNavigation();
   return (
     <>
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
-          <form id="search-form" role="search">
+          <Form id="search-form" role="search">
             <input
               id="q"
               aria-label="Search contacts"
               placeholder="Search"
               type="search"
               name="q"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
             />
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
-          </form>
+          </Form>
           <Form method="post">
             <button type="submit">New</button>
           </Form>
