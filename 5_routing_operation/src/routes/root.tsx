@@ -1,23 +1,34 @@
 /* eslint-disable react-refresh/only-export-components */
 // https://reactrouter.com/en/main/start/tutorial#the-root-route
 
-import { Outlet, Link, useLoaderData , Form} from "react-router-dom";
+import {
+  Outlet,
+  NavLink,
+  useLoaderData,
+  Form,
+  redirect,
+} from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 import { ContactInfo } from "../types/contact_types";
 
+//* The `action` function is used to perform side-effects, such as data fetching, and navigation.
+//* Action fonksiyonu eğer yeni bir kişi oluşturulduysa, kişinin düzenleme sayfasına yönlendirme yapar.
 
-export async function action(): Promise<{ contact: ContactInfo }> {
-    const contact = await createContact();
-    return { contact };
+export async function action() {
+  const contact = await createContact();
+  return redirect(`/contacts/${contact.id}/edit`);
 }
-export async function loader(): Promise<{ contacts: ContactInfo[] }>{
+
+//* The `loader` function is used to fetch data for the route.
+//* Loader fonksiyonu, rota için veri almak için kullanılır.
+export async function loader(): Promise<{ contacts: ContactInfo[] }> {
   const contacts = await getContacts("");
   return { contacts };
 }
 
 //* The Root Route
 //* Kök Rotası
-export default function Root() { 
+export default function Root() {
   const { contacts } = useLoaderData() as { contacts: ContactInfo[] };
   return (
     <>
@@ -73,9 +84,14 @@ export default function Root() {
             */}
           {contacts.length ? (
             <ul>
-              {contacts.map((contact:ContactInfo) => (
+              {contacts.map((contact: ContactInfo) => (
                 <li key={contact.id}>
-                  <Link to={`contacts/${contact.id}`}>
+                  <NavLink
+                    to={`contacts/${contact.id}`}
+                    className={({ isActive, isPending }) =>
+                      isActive ? "active" : isPending ? "pending" : ""
+                    }
+                  >
                     {contact.first || contact.last ? (
                       <>
                         {contact.first} {contact.last}
@@ -83,7 +99,7 @@ export default function Root() {
                     ) : (
                       <i>No Name</i>
                     )}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
