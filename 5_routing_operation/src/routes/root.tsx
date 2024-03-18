@@ -40,15 +40,19 @@ export default function Root() {
     contacts: ContactInfo[];
     q: string | null;
   };
-  const [query, setQuery] = useState(q);
+  const navigation = useNavigation();
+
+  // https://reactrouter.com/en/main/start/tutorial#adding-search-spinner
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has("q");
 
   // https://reactrouter.com/en/main/start/tutorial#submitting-forms-onchange
   const submit = useSubmit();
   useEffect(() => {
-    setQuery(q);
+    document.getElementById("q")!.value = q;
   }, [q]);
 
-  const navigation = useNavigation();
   return (
     <>
       <div id="sidebar">
@@ -59,15 +63,16 @@ export default function Root() {
               id="q"
               aria-label="Search contacts"
               placeholder="Search"
+              // https://reactrouter.com/en/main/start/tutorial#adding-search-spinner
+              className={searching ? "loading" : ""}
               type="search"
               name="q"
-              value={query}
+              value={q!}
               onChange={(e) => {
-                // setQuery(e.target.value);
                 submit(e.currentTarget.form);
               }}
             />
-            <div id="search-spinner" aria-hidden hidden={true} />
+            <div id="search-spinner" aria-hidden hidden={!searching} />
             <div className="sr-only" aria-live="polite"></div>
           </Form>
           <Form method="post">
