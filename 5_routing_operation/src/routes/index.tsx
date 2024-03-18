@@ -8,8 +8,9 @@ export default function Index() {
         <br />
         Check out{" "}
         <a href="https://reactrouter.com">the docs at reactrouter.com</a>.
+        <br />
+        <a href="https://github.com/kaancaman">I learned from Kaan Caman</a>.
       </p>
-      <p></p>
     </>
   );
 }

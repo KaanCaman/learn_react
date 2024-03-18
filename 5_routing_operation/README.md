@@ -38,3 +38,45 @@ const BasicUseEffect = () => {
   );
 };
 ```
+
+### react-router-dom ile sayfa yönlendirme / Page routing with react-router-dom
+
+- [reactrouter.com/en/main/start/tutorial](https://reactrouter.com/en/main/start/tutorial)
+- [şu](https://reactrouter.com/en/main/start/tutorial) likteki adımları takip ederek react-router-dom kullanımını öğrenebilirsiniz.
+
+- You can learn how to use react-router-dom by following the steps in [this](https://reactrouter.com/en/main/start/tutorial) link.
+
+#### Ekran Görüntüsü / Screenshot
+
+<!-- add image -->
+
+- Anasayfa / index
+ ![Index](./public/ss/home.png)
+
+- Kişi Detayı / Contact Detail
+  ![Contact Detail](./public/ss/selected_contact.png)
+
+- Kişi Ekle / Add Contact
+  ![Add Contact](./public/ss/add_contact.png)
+
+- Kişi Listesi / Contact List
+  ![Contact List](./public/ss/list_contact.png)
+
+- Kişi Düzenle / Edit Contact
+  ![Edit Contact](./public/ss/edit_contact.png)
+  ![Edit Contact](./public/ss/edit_after_contact.png)
+
+- Favoriye Ekleme - Cıkarma / Add/Remove to Favorite
+  ![Add to Favorite](./public/ss/fav_contact.png)
+  ![Remove from Favorite](./public/ss/unfav_contact.png)
+
+- Kişi Silme / Delete Contact
+  ![Delete Contact](./public/ss/delete_contact.png)
+  ![Delete Contact After](./public/ss/delete_after.png)
+
+- Search
+  ![Search](./public/ss/search_sucs.png)
+  ![Search null](./public/ss/search_null.png)
+
+- 404
+  ![404](./public/ss/error_page.png)
