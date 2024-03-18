@@ -7,6 +7,7 @@ import {
   useLoaderData,
   Form,
   redirect,
+  useNavigation,
 } from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 import { ContactInfo } from "../types/contact_types";
@@ -30,6 +31,7 @@ export async function loader(): Promise<{ contacts: ContactInfo[] }> {
 //* Kök Rotası
 export default function Root() {
   const { contacts } = useLoaderData() as { contacts: ContactInfo[] };
+  const navigation = useNavigation();
   return (
     <>
       <div id="sidebar">
@@ -112,7 +114,12 @@ export default function Root() {
           {/*  */}
         </nav>
       </div>
-      <div id="detail">
+      <div
+        id="detail"
+        // useNavigation returns the current navigation state: it can be one of "idle" | "submitting" | "loading".
+        // useNavigation, geçerli navigasyon durumunu döndürür: "idle" | "submitting" | "loading" olabilir.
+        className={navigation.state === "loading" ? "loading" : ""}
+      >
         {/* 
             * The nested route's element will be rendered here.
             * İç içe geçmiş rota elemanı burada render edilecek.
