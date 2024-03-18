@@ -13,6 +13,8 @@ import "./index.css";
 import ErrorPage from "./pages/error_page";
 import Contact, { loader as contactLoader } from "./routes/contact";
 import EditContact, { action as editAction } from "./routes/edit";
+
+import { action as destroyAction } from "./routes/destroy";
 import { StrictMode } from "react";
 
 //* Define our routes
@@ -50,6 +52,12 @@ const routes: RouteObject[] = [
         loader: contactLoader,
 
         action: editAction,
+      },
+
+      // add destroy routes - silme rotası ekle
+      {
+        path: "/contacts/:id/destroy",
+        action: destroyAction,
       },
     ],
     errorElement: <ErrorPage />,
