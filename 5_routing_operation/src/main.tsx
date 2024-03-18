@@ -16,6 +16,7 @@ import EditContact, { action as editAction } from "./routes/edit";
 
 import { action as destroyAction } from "./routes/destroy";
 import { StrictMode } from "react";
+import Index from "./routes";
 
 //* Define our routes
 //* Rotalarımızı tanımlayalım
@@ -35,6 +36,13 @@ const routes: RouteObject[] = [
     action: rootAction,
 
     children: [
+      // add index routes - index rotaları ekle
+      // https://reactrouter.com/en/main/start/tutorial#index-routes
+      {
+        index: true,
+        element: <Index />,
+      },
+
       // Add a new route for the contact page - letişim sayfası için yeni bir rota ekledik.
       // This route will have a dynamic segment for the contact's ID. - Bu rota, iletişim kişisinin kimliği için dinamik bir segmente sahip olacak.
       // Nested routes are rendered inside the parent route's element. - İç içe geçmiş rotalar, üst rotanın elementi içinde render edilir.
