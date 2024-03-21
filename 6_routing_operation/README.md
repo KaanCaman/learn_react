@@ -1,4 +1,4 @@
-# 5.  Rotalama ve işlemleri / Routing and Operation
+# 6.  Rotalama ve işlemleri / Routing and Operation
 
 ## React + TypeScript + Vite
 
