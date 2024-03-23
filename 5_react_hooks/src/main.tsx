@@ -1,12 +1,9 @@
-import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import UseEffect from "./hooks/use_effect/UseEffect";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <div>
-      <h1>Hello, world!</h1>
-      <p>Learn React Hooks</p>
-    </div>
-  </StrictMode>
+  <>
+    <UseEffect />
+  </>
 );
