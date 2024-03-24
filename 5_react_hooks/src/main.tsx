@@ -1,10 +1,11 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import UseRef from "./hooks/use_ref/UseRef";
+import UseReducer from "./hooks/use_reducer/UseReducer";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
     {/* <UseEffect /> */}
-    <UseRef/>
+    {/* <UseRef/> */}
+    <UseReducer />
   </>
 );
