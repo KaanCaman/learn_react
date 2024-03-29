@@ -1,11 +1,12 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import UseReducer from "./hooks/use_reducer/UseReducer";
+import UseCallback from "./hooks/use_callback/UseCallback";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
     {/* <UseEffect /> */}
     {/* <UseRef/> */}
-    <UseReducer />
+    {/* <UseReducer /> */}
+    <UseCallback />
   </>
 );
