@@ -6,9 +6,33 @@
   flex-direction: column;
 }
 
+hr {
+  width: 100%;
+  margin: 1rem 0;
+  border: 1px solid #555;
+}
+
 .header {
-  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 1.25rem;
+}
+
+.counter-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.counter-area > button {
+  padding: 10px;
+  background-color: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 /* conact-area */
