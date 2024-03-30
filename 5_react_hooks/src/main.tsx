@@ -1,12 +1,13 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import UseCallback from "./hooks/use_callback/UseCallback";
+import UseMemo from "./hooks/use_memo/UseMemo";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
     {/* <UseEffect /> */}
     {/* <UseRef/> */}
     {/* <UseReducer /> */}
-    <UseCallback />
+    {/* <UseCallback /> */}
+    <UseMemo />
   </>
 );

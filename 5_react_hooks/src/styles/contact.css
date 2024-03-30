@@ -1,0 +1,96 @@
+.rootsc {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header {
+  margin: 2rem;
+  font-size: 1.25rem;
+}
+
+/* conact-area */
+.contact-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* form area start */
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: #444;
+  gap: 10px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.form-input {
+  color: white;
+  background-color: #333;
+  border: 1px solid #666;
+  padding: 10px;
+}
+
+.form-submit {
+  color: white;
+  font-weight: bold;
+  background-color: rgb(16 16, 160);
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.form-submit:hover {
+  background-color: rgb(16 16, 200);
+}
+/* form area end */
+.scrollable-area {
+  overflow-y: auto;
+  max-height: 500px;
+  /* scrollbar color */
+  scrollbar-color: #666 #333;
+  scrollbar-width: thin;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: #444;
+  border-radius: 10px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 10px;
+}
+.list-item-delete {
+  color: rgb(255, 64, 64);
+  background-color: #444;
+  border: none;
+}
+
+.list-item-delete:hover {
+  background-color: rgb(255, 64, 64);
+  color: white;
+}
+
+.list-item-text {
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+}
