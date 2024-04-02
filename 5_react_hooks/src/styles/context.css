@@ -1,0 +1,144 @@
+.light {
+  background-color: #e1e1e1;
+  color: #313131;
+  /* animasyon */
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.dark {
+  background-color: #313131;
+  color: #e1e1e1;
+  /* animasyon */
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.use-context-screen {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.main-text-area {
+  width: 90%;
+  padding: 1.25rem;
+  border: 1px solid rgb(185, 71, 18);
+  border-radius: 5px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.toggle-button-dark {
+  background-color: #070707;
+  color: #e1e1e1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  /* animation */
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.toggle-button-light {
+  background-color: #f7f7f7;
+  color: #313131;
+  padding: 0.5rem;
+  border: none;
+
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.disabled-button-light {
+  background-color: #e1e1e1;
+  color: #313131;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: not-allowed;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.disabled-button-dark {
+  background-color: #313131;
+  color: #e1e1e1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: not-allowed;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.toggle-button:hover {
+  background-color: #e1e1e1;
+  color: #313131;
+}
+
+.toggle-text {
+  transition: color 0.5s;
+}
+
+.login-button-light {
+  background-color: rgb(0, 0, 167);
+  color: #ffffff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.login-button-dark {
+  background-color: rgb(0, 0, 176);
+  color: #ffffff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.login-button-light:hover,
+.login-button-dark:hover {
+  background-color: rgb(0, 0, 76);
+}
