@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import UseMemo from "./hooks/use_memo/UseMemo";
+import UseContext from "./hooks/use_context/UseContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
@@ -8,6 +8,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     {/* <UseRef/> */}
     {/* <UseReducer /> */}
     {/* <UseCallback /> */}
-    <UseMemo />
+    {/* <UseMemo /> */}
+    <UseContext />
   </>
 );
