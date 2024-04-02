@@ -1,6 +1,13 @@
 import ToggleLanguage from "./ToggleLanguage";
 import ToggleTheme from "./ToggleTheme";
 
+/**
+ *
+ * Header Component
+ *
+ * @returns
+ * Header Component
+ */
 const Header = () => {
   return (
     <header className="header">

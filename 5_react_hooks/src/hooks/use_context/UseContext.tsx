@@ -1,32 +1,35 @@
 import "../../styles/context.css";
 
-import Header from "./components/Header";
+import { AuthContext, SiteContext } from "./context/";
+import Body from "./components/Body";
 
-import Footer from "./components/Footer";
+/**
+ *
+ * UseContext Component
+ *
+ * context kavramı : Componentlere props drilling yapmadan state ve dispatch fonksiyonlarını paylaşmamızı sağlar.
+ * The context concept: Allows us to share state and dispatch functions between components without props drilling.
+ *
+ * context kavramını kullanarak state ve dispatch fonksiyonlarını paylaşan bir uygulama.
+ * An application that shares state and dispatch functions using the context concept.
+ *
+ * @description
+ * SiteContext ve AuthContext provider'ları kullanılarak Body component'i render edilir.
+ * The Body component is rendered using the SiteContext and AuthContext providers.
+ *
+ *
+ *
+ * @returns
+ * UseContext Component
+ */
 const UseContext = () => {
   return (
     <>
-      <div className={`use-context-screen`}>
-        <Header />
-
-        <main className="main">
-          <h3>Main</h3>
-          <div className="main-text-area">
-            <p>
-              Ben <strong>KAAN</strong> react hooks ile ilgili örnekler yapmaya
-              devam ediyorum. Bu örneğimde useContext hook'unu kullanarak dil ve
-              tema değişikliği yapabiliyoruz.
-            </p>
-            <p>
-              I'm <strong>KAAN</strong> continuing to make examples about react
-              hooks. In this example, we can change language and theme using
-              useContext hook.
-            </p>
-          </div>
-        </main>
-
-        <Footer />
-      </div>
+      <SiteContext>
+        <AuthContext>
+          <Body />
+        </AuthContext>
+      </SiteContext>
     </>
   );
 };

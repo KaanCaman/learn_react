@@ -118,3 +118,9 @@ footer {
   margin-top: 2rem;
   font-size: 1.25rem;
 }
+
+.footer-text-area {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
